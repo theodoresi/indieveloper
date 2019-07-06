@@ -5,7 +5,6 @@ date:   2019-07-06 12:40:49 +0800
 categories: jekyll
 ---
 
-
 # 安装与配置开发环境
 
 我们这里将在Ubuntu 19.04上构建开发环境。
@@ -21,13 +20,12 @@ $ \curl -sSL https://get.rvm.io | bash -s stable
 $ rvm install ruby-2.6
 ```
 
-rvm会帮你安装相关的依赖，并安装ruby。至此，你可以查看下自己的Ruby和Gem版本
+rvm会帮你安装相关的依赖，并安装ruby。安装结束后，你可以尝试跑一下`rvm use ruby`，你会看到一些错误提示信息，要求你allow login shell。不同的Terminal设置可能不同，在Ubuntu，你可以这样做：`Profile`->`Command`->`Run command as a login shell`。重新打开你的Terminal，查看下自己的ruby和gem命令是否可以正常运行了：
+
 ```Bash
 $ ruby -v
 $ gem -v
 ```
-
-如果上述命令可以正常运行，那么你的Ruby就装好了。
 
 接下来就是主角登场的时间了，执行以下命令，你的网站就建好并且启动了！
 
@@ -38,4 +36,9 @@ $ cd my-awesome-site
 $ bundle exec jekyll serve
 ```
 
-打开浏览器，访问[http://localhost:4000](http://localhost:4000)
+打开浏览器，访问[http://localhost:4000](http://localhost:4000)。
+
+## Jekyll的基本配置
+
+
+## 写一篇图文并茂的博客
