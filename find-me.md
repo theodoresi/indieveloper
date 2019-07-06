@@ -1,6 +1,7 @@
 ---
-title: 我的其他窝点
+title: Find Me
 permalink: /find-me/
+order: 3
 
 ---
 

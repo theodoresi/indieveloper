@@ -70,3 +70,4 @@ defaults:
 # This theme requires this to bee added.
 # I also need to have a _sections folder in root directory
 collections: [sections]
+avatar: assets/imgs/avatar.jpg
