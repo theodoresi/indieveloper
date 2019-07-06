@@ -3,6 +3,9 @@ title: Find Me
 permalink: /find-me/
 icon: fa-blind
 order: 1
+cover-photo: /assets/imgs/homepage-cover.jpeg
+cover-photo-alt: homepage cover
+
 
 ---
 
