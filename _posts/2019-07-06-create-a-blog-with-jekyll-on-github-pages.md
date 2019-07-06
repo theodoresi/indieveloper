@@ -3,6 +3,7 @@ layout: post
 title:  "使用Jekyll在Github Pages上创建自己的博客"
 date:   2019-07-06 12:40:49 +0800
 categories: jekyll
+permalink: /blog/:categories/:title
 ---
 
 # 安装与配置开发环境
