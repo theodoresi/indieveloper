@@ -24,15 +24,17 @@ github_username:  theodoresi
 
 # Build settings
 markdown: kramdown
-theme: minima
+#theme: minima
 
+# -------------------------
 # Use remote theme
 #remote_theme: niklasbuschmann/contrast
-#
+remote_theme: chrisbobbe/jekyll-theme-prologue
+# -------------------------
+
 plugins:
   - jekyll-feed
-    # the remote theme plugin
-    #- jekyll-remote-theme
+  - jekyll-remote-theme  # the remote theme plugin
 
 
 # Exclude from processing.
@@ -62,3 +64,9 @@ defaults:
       type: "pages"
     values:
       layout: "page"
+
+#theme: jekyll-theme-prologue
+
+# This theme requires this to bee added.
+# I also need to have a _sections folder in root directory
+collections: [sections]
