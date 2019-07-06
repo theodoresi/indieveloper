@@ -51,3 +51,9 @@ defaults:
     values:
       layout: "post"
       permalink: /blog/:categories/:title
+  -
+    scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"

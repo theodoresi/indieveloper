@@ -1,5 +1,4 @@
 ---
-layout: page
 title: 我的其他窝点
 permalink: /find-me/
 
