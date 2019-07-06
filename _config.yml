@@ -25,10 +25,10 @@ github_username:  theodoresi
 # Build settings
 markdown: kramdown
 #theme: minima
+#theme: jekyll-theme-prologue
 
 # -------------------------
 # Use remote theme
-#remote_theme: niklasbuschmann/contrast
 remote_theme: chrisbobbe/jekyll-theme-prologue
 # -------------------------
 
@@ -65,9 +65,7 @@ defaults:
     values:
       layout: "page"
 
-#theme: jekyll-theme-prologue
 
-# This theme requires this to bee added.
 # I also need to have a _sections folder in root directory
 collections: [sections]
 avatar: assets/imgs/avatar.jpg

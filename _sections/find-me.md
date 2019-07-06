@@ -2,7 +2,7 @@
 title: Find Me
 permalink: /find-me/
 icon: fa-blind
-order: 3
+order: 1
 
 ---
 
