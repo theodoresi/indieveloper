@@ -4,11 +4,11 @@ date: 2019-07-06 12:40:49 +0800
 categories: jekyll
 ---
 
-# 安装与配置开发环境
+## 安装与配置开发环境
 
 我们这里将在Ubuntu 19.04上构建开发环境。
 
-## 安装Ruby以及Jekyll
+### 安装Ruby以及Jekyll
 
 Ubuntu仓库中的Ruby版本较低，因此我们将使用[RVM(Ruby Version Manager)](http://rvm.io/)安装Ruby。首先要安装gnupg2以及curl，然后添加GPG keys并且安装RVM。紧接着就可以使用RVM安装指定版本的Ruby。
 
@@ -37,10 +37,9 @@ $ bundle exec jekyll serve
 
 打开浏览器，访问[http://localhost:4000](http://localhost:4000)。
 
-## Jekyll的基本配置
+### Jekyll的基本配置
 
-
-## 写一篇图文并茂的博客
+### 写一篇图文并茂的博客
 
 接下来，我们开始写第一篇博客了！在这篇博客中，我们将会使用各种Markdown语法。
 

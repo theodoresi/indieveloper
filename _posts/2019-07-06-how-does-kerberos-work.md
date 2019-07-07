@@ -8,11 +8,11 @@ tags: kerberos encryption protocol
 
 ![Kerberos](/assets/imgs/Kerberos/kerberos-log.jpg)
 
-# 什么是Keberos
+## 什么是Keberos
 
 在谈论Kerberos的技术细节之前，我希望通过一个故事让你了解Kerberos的本质。如果你把这个故事复述给自己的奶奶，她也能听懂（assert 你的奶奶 is not 严蔚敏），那说明你真正理解了Kerberos。
 
-# 我要到华盛顿闹革命！
+## 我要到华盛顿闹革命
 
 特朗普上台以后，你听闻美国人民生活在水深火热之中，华盛顿甚至发生数次暴动。因此你决定远赴美国，传播共产主义精神，解救美帝人民于水火之中。在得知游泳跨越太平洋难度极大，且偷渡属于违法行为之后，你决定做一个遵纪守法的好公民，所以来到美国大使馆办理相关手续。
 
@@ -32,7 +32,7 @@ tags: kerberos encryption protocol
 
 ![Cry](/assets/imgs/Kerberos/cry.jpg)
 
-# Story is cheap, show me the protocol！
+## Story is cheap, show me the protocol！
 
 此刻你也许会说，“故事我听懂了。在这个故事里，我想要到大使馆办理出国手续，也就是使用大使馆的服务，那么就先要到派出所办理身份证明，也就是进行认证。可是如果别人面试的时候我给他讲这么一个故事，恐怕是会被轰出去吧？！”
 
@@ -52,13 +52,13 @@ Client会首先向KDC发送自己的身份信息。发送的数据包是部分�
 
 如果你把Kerberos协议和上面的故事进行对比，你就会发现“你”就是Client，派出所就是KDC，而各个大使馆就是Server。你希望使用大使馆提供的服务，就要向他们证明你是自己所声称的那个人，因此就需要首先向KDC（派出所），提供自己的用户名和密码（也就是你的姓名和身份证号码）。派出所根据你提供的姓名找到对应的身份证号码，发现和你提供的一致，也就证实了你的身份。而蓝色的快速通行证其实就是TGT，（TGT具有实效性，所以才会出现后来换了彩色通行证蓝色的就不被承认了）。而绿色、红色的大使馆证明，就是Ticket，你带着Ticket使用相关服务，Server看到正确的Ticket就知道你认证过了，因此也就会为你提供服务。
 
-# 总结
+## 总结
 
 读完本文，你是不是发现这只三头神犬也没有那么神秘呢？当然这里我们只是非常浅显地介绍了Kerberos的认证过程，许多技术细节并没有深入探讨，更多详细内容就留在未来吧！(TODO)
 
 ![Lie](/assets/imgs/Kerberos/lie.PNG)
 
-## 参考资料
+### 参考资料
 
 [Designing an Authentication System: a Dialogue in Four Scenes](https://web.mit.edu/kerberos/dialogue.html)
 
