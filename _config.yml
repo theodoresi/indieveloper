@@ -58,12 +58,14 @@ defaults:
     values:
       layout: "post"
       permalink: /blog/:categories/:title
+      author: "Theodore Si"
   -
     scope:
       path: ""
       type: "pages"
     values:
       layout: "page"
+      author: "Theodore Si"
 
 
 # I also need to have a _sections folder in root directory

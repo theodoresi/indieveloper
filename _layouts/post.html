@@ -1,0 +1,23 @@
+---
+layout: default
+---
+{%- include header.html -%}
+
+<!-- Main -->
+<div id="main">
+	<!-- Post -->
+	<article class="shade-two">
+	  <div class="container">
+			<header>
+				<h1><i class="fas fa-arrow-circle-right">&nbsp;</i>{{- page.title -}}</h1>
+				<p>
+                    {% if page.author %}
+                        <i class="fas fa-id-badge"></i>&nbsp;{{ page.author }} &nbsp; &nbsp;
+                    {% endif %}
+                    <i class="fas fa-clock"></i>&nbsp;{{- page.date | date_to_long_string -}}
+                </p>
+			</header>
+	    {{- content -}}
+	  </div>
+	</article>
+</div>
