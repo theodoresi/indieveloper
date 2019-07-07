@@ -71,3 +71,37 @@
 		}    
 	}  
 }
+.image {
+	&.avatar48 {
+		width: 48px;
+		height: 48px;
+		background: #f00;
+
+		img {
+			width: 48px;
+			height: 48px;
+		}
+	}
+
+	&.avatar64 {
+		width: 64px;
+		height: 64px;
+		background: #f00;
+
+		img {
+			width: 64px;
+			height: 64px;
+		}
+	}
+
+	&.avatar96 {
+		width: 96px;
+		height: 96px;
+		background: #f00;
+
+		img {
+			width: 96px;
+			height: 96px;
+		}
+	}
+}
