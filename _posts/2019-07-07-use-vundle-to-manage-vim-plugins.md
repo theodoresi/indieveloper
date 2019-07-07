@@ -8,7 +8,7 @@ tags: vim plugin
 
 Vim凭借其本身的功能，已经称得上地表最强大文本编辑器之一。在各种插件的加持下，它更是如有神助，让文本输入变成了一种让人享受的超然体验。
 
-但是，正如人无完人，Vim也绝非完美，它自带的插件管理就不是很好用。好在有许多优秀的工具可以帮助我们完成这一工作。今天，我就将向大家介绍`Vundle`，一款优秀的Vim插件管理器。
+但是，正如人无完人，Vim也绝非完美，它自带的插件管理就不是很好用。好在有许多优秀的工具可以帮助我们完成这一工作。今天，我就将向大家介绍Vundle，一款优秀的Vim插件管理器。
 
 # 茹毛饮血的手动管理方式
 
@@ -22,7 +22,93 @@ Vim凭借其本身的功能，已经称得上地表最强大文本编辑器之�
 
 ## 下载
 
+点击上面的链接🔗，会跳转到插件的Github主页。以Zip压缩包的方式下载项目后，将其解压到`~/.vim/bundle/`目录中（这一目录只是约定俗成的路径，并非必须）。
+
 ## 配置
 
+单纯把解压得到的文件夹放入`bundle`目录还不够，你需要编辑你的`runtimepath`，让其包含`~/.vim/bundle/vim-markdown-quote-syntax-master`。
 
-# 文明优雅的`Vundle`管理方式
+1. `$ vim ~/.vimrc`
+2. 增加一行`set runtimepath^=~/.vim/bundle/vim-markdown-quote-syntax-master`
+3. 退出Vim，重新打开`.md`文件，你会发现我们的代码拥有了高贵的语法高亮
+
+![with-vim-markdown-quote-syntax](/assets/imgs/vundle-tutorial/with-vim-markdown-quote-syntax.png)
+
+# 文明优雅的Vundle管理方式
+
+美好的人生不应如此多艰，装个插件咋能这么麻烦？一定是姿势不对啊！问，理想情况下，安装插件总共分几步？
+
+![three-steps](/assets/imgs/vundle-tutorial/3-steps.png)
+
+1. 找到想要的插件
+2. 安装
+3. 开始用！
+
+如果使用Vundle，我们要做的就是
+1. 在`.vimrc`中添加`Plugin 'joker1007/vim-markdown-quote-syntax'`
+2. 运行`:PluginInstall`
+3. 开始用!
+
+是不是非常简单？不需要再去下载代码，也不需要自己操作`runtimepath`，一下步入了小康社会啊！
+
+## 安装Vundle
+
+万事开头难，为了以后的幸福，我们先要吃点苦，也就是安装下Vundle。好在Vundle的安装相对来说还是很容易的。
+
+我们首先打开[Vundle](https://github.com/VundleVim/Vundle.vim)的GitHub首页，然后找到[Quick Start](https://github.com/VundleVim/Vundle.vim#quick-start)。文章的主体思想就是：
+
+1. 先把Vundle下载下来，放到你的`~/.vim/bundle/`文件夹下。`git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+2. 把这一段内容复制到你`.vimrc`文件中
+    ```vim
+    set nocompatible              " be iMproved, required
+    filetype off                  " required
+    
+    " set the runtime path to include Vundle and initialize
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
+    " alternatively, pass a path where Vundle should install plugins
+    "call vundle#begin('~/some/path/here')
+    
+    " let Vundle manage Vundle, required
+    Plugin 'VundleVim/Vundle.vim'
+    
+    " The following are examples of different formats supported.
+    " Keep Plugin commands between vundle#begin/end.
+    " plugin on GitHub repo
+    Plugin 'tpope/vim-fugitive'
+    " plugin from http://vim-scripts.org/vim/scripts.html
+    " Plugin 'L9'
+    " Git plugin not hosted on GitHub
+    Plugin 'git://git.wincent.com/command-t.git'
+    " git repos on your local machine (i.e. when working on your own plugin)
+    Plugin 'file:///home/gmarik/path/to/plugin'
+    " The sparkup vim script is in a subdirectory of this repo called vim.
+    " Pass the path to set the runtimepath properly.
+    Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
+    " Install L9 and avoid a Naming conflict if you've already installed a
+    " different version somewhere else.
+    " Plugin 'ascenator/L9', {'name': 'newL9'}
+    
+    " All of your Plugins must be added before the following line
+    call vundle#end()            " required
+    filetype plugin indent on    " required
+    " To ignore plugin indent changes, instead use:
+    "filetype plugin on
+    "
+    " Brief help
+    " :PluginList       - lists configured plugins
+    " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
+    " :PluginSearch foo - searches for foo; append `!` to refresh local cache
+    " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
+    "
+    " see :h vundle for more details or wiki for FAQ
+    " Put your non-Plugin stuff after this line
+    ```
+3. 打开vim然后运行`:PluginInstall`就可以安装你在`.vimrc`中指定的插件了。或者你也可以直接在Terminal中运行`vim +PluginInstall +qall`来安装插件。
+
+如果以后想安装新的插件，只要根据上面的描述，根据插件来源在相应的位置添加插件的名字就好了。
+
+
+# 总结
+
+虽然说，有了Vundle妈妈再也不用担心我安装Vim插件的时候掉头发了。但是在此还是劝诫大家，劳逸结合，适度编程！
