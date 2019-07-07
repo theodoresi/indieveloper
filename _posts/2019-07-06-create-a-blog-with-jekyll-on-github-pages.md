@@ -42,6 +42,8 @@ $ bundle exec jekyll serve
 
 ## 写一篇图文并茂的博客
 
+接下来，我们开始写第一篇博客了！在这篇博客中，我们将会使用各种Markdown语法。
+
 ```python
 def my_function():
     print('Hi, this is my function')
