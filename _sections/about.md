@@ -12,9 +12,13 @@ Hi, 欢迎你的光临！
 
 欢迎投食
 
-专业技能：Python
+编程语言框架：Python, AngularJS, Angular
 
-开发领域：不明
+开发领域：各种各样
+
+Web开发：Google dev tools, postman
+
+网络工具：Wireshark, nmap, mtr, route, traceroute, iptables, 
 
 业余时间喜欢玩CS: GO（菜鸡精英：全球互啄）
 
