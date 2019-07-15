@@ -37,7 +37,7 @@ if __name__ == '__main__':
 
 也许你好奇为什么我们把程序放在了`__init__.py`里，这是因为对于一个大型项目，官方建议将其变为一个package，详细内容可以[看这里](https://flask.palletsprojects.com/en/1.1.x/patterns/packages/#larger-applications)。好吧，我承认我们的项目怎么说也不算大型...Anyway...
 
-`setup.py`是用来协助`Distutils`对程序打包的。有了它，我们就可以通过`pip`来安装我们的app了。
+`setup.py`是用来协助`Distutils`对程序打包的。有了它，我们就可以通过`pip`来安装我们的app了。其实这里`setup.py`也不是必须的啦，因为我们会把项目整个COPY过去。
 
 ```python
 from distutils.core import setup
@@ -84,7 +84,7 @@ $ flask run
 
 如果一切正常，你应该看到你的app已经在`5000`端口运行了。
 
-然后我们用`pip`将我们的app安装到刚刚创建的venv中
+然后我们用`pip`将我们的app安装到刚刚创建的venv中：
 
 ```bash
 $ pip install .
@@ -157,12 +157,13 @@ $ sudo docker image ls
 我们应该可以看到新的image已经生成好了。那就让我们来运行一下吧！
 
 ```bash
+# interactively
 $ sudo docker run -it --rm -p 8888:8888 my_flask_demo
-# 或者
+# 或者run in background
 $ sudo docker run -d -p 8888:8888 --name my_flask_demo my_flask_demo
 ```
 
-这个时候你就可以通过`http://localhost:8888`访问你的app了。当你想关闭应用的时候，只要运行以下命令就可以了。
+这个时候你就可以通过`http://localhost:8888`访问你的app了。当你想关闭应用的时候，如果是通过`-it`运行的，只要`Ctrl-C`即可，如果是通过`-d`，只要运行以下命令就可以了。
 
 ```bash
 $ sudo docker stop my_flask_demo
