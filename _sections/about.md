@@ -12,15 +12,17 @@ Hi, 欢迎你的光临！
 
 欢迎投食
 
-编程语言框架：Python, AngularJS, Angular
+----------
 
-开发领域：各种各样
+语言：Python
 
-Web开发：Google dev tools, postman
+编辑器：Vim
 
-网络工具：Wireshark, nmap, mtr, route, traceroute, iptables, 
+缩进：Tab转4空格
 
-业余时间喜欢玩CS: GO（菜鸡精英：全球互啄）
+----------
+
+业余时间喜欢玩菜鸡精英：全球互啄 给他爱5 欢迎一起联机
 
 不定期在B站更新视频
 
