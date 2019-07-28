@@ -47,6 +47,13 @@ $ bundle exec jekyll serve
 
 #### Windows 10
 
+Windows不是官方正式支持的平台，但是通过一些“小技巧”还是可以在Windows上使用Jekyll的。详情可以参考[Jekyll on Windows](https://jekyllrb.com/docs/installation/windows/)。
+
+1. 下载安装[Rubyinstaller](https://rubyinstaller.org/downloads/)
+1. 在安装的最后一步，运行`ridk install`
+1. 安装结束后，打开新的命令行窗口，运行`gem install jekyll bundler`
+1. 测试jekyll是否正常`jekyll -v`
+
 ### Jekyll的基本配置
 
 #### 使用模板
