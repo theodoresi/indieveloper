@@ -20,18 +20,20 @@ categories: jekyll
 
 ## 从简单的事情开始——使用GitHub Pages创建一个网站
 
-[GitHub Pages](https://pages.github.com/)是一个静态网站托管服务，你可以在这里找到[官方文档](https://help.github.com/en/categories/github-pages-basics)。学习接下来就通过简单的几个步骤，实践一下GitHub Pages的Hello World：
+[GitHub Pages](https://pages.github.com/)是一个静态网站托管服务，你可以在这里找到[官方文档](https://help.github.com/en/categories/github-pages-basics)。接下来我们就通过简单的几个步骤，实践一下GitHub Pages版的Hello World：
 
-1. 创建一个新的**public** repo，名字是`<your_user_name>.github.io`，其中`<your_user_name>`必须是你的用户名。由于我们随后要使用Jekyll来构建网站，所以我建议在`Add .gitignore`那里选择Jekyll。
-1. 将repo克隆到本地，然后在其中创建一个index.html，写入任意内容，然后push到repo中。
+1. 创建一个新的**public** repo，名字是`<your_user_name>.github.io`，其中`<your_user_name>`必须是你的用户名。由于我们随后要使用Jekyll来构建网站，所以我建议在`Add .gitignore`那里选择Jekyll，这样Jekyll编译生成的副产品就不会被同步到我们的repo中。
+1. 将repo克隆到本地，然后在其中创建一个index.html，写入任意内容后push到repo中。
 1. 稍等片刻，打开`https://<your_user_name>.github.io`，你会发现自己的网站已经可以访问了！
 
 
 ## 安装与配置开发环境
 
-工欲善其事必先利其器，在写博客之前我们需要创建好写作环境。这一步骤还是有点挑战的，尤其是如果你像我一样对Ruby没有任何使用经验，对其生态环境也不了解的话。不过坑我已经帮你踩过了，只要你紧随我的脚步，相信你一定能顺利度过雷区，开启自己的写作生涯。
+事实上，如果你愿意写HTML，或者以纯文本方式展示你的文章，你的个人博客已经构建完成了！但是那显然是一件非常痛苦的事情（不论对你还是对你的读者都是一种非人道主义行为），因此我们需要Jekyll帮助我们构建更加美观，易用的写作环境。Jekyll是一个静态页面生成器，你可以在[这里](https://jekyllrb.com/docs/)了解更多关于Jekyll的信息。
 
-我们这里介绍两个平台，Windows 10和Linux(以Ubuntu 19.04/Manjaro 18.04为例)。
+接下来我们就开始安装Jekyll，这一步骤还是有点挑战的，尤其是如果你像我一样对Ruby没有任何使用经验，对其生态环境也不了解的话。不过坑我已经帮你踩过了，只要你紧随我的脚步，相信你一定能顺利度过雷区，开启自己的写作生涯。
+
+我们这里介绍两个平台上的安装方法，Windows 10和Linux(以Ubuntu 19.04/Manjaro 18.04为例)，Mac用户遵照Linux的方式详细也能轻松完成安装。
 
 ### 安装Ruby以及Jekyll
 
@@ -57,37 +59,35 @@ rvm会帮你安装相关的依赖，并安装ruby。安装结束后，你可以�
 ```bash
 $ ruby -v
 $ gem -v
-```
-
-接下来就是主角登场的时间了，执行以下命令，我们将在本地创建一个基于jekyll的网站：
-
-```bash
 $ gem install bundler jekyll
-$ jekyll new my-awesome-site
-$ cd my-awesome-site
-$ bundle exec jekyll serve
+$ jekyll -v
 ```
-
-打开浏览器，访问[http://localhost:4000](http://localhost:4000)。
 
 #### Windows 10
 
-Windows不是官方正式支持的平台，但是通过一些“小技巧”还是可以在Windows上使用Jekyll的。详情可以参考[Jekyll on Windows](https://jekyllrb.com/docs/installation/windows/)。
+Windows不是Jekyll官方正式支持的平台，但是通过一些“小技巧”还是可以在Windows上使用Jekyll的。详情可以参考[Jekyll on Windows](https://jekyllrb.com/docs/installation/windows/)。
 
 1. 下载安装[Rubyinstaller](https://rubyinstaller.org/downloads/)
 1. 在安装的最后一步，运行`ridk install`
 1. 安装结束后，打开新的命令行窗口（在开始菜单中搜索ruby，找到`Start Command Prompt with Ruby`），运行`gem install jekyll bundler`
 1. 测试jekyll是否正常`jekyll -v`
 
-### Jekyll的基本配置
 
-#### 使用模板
+### 生成一个Jekyll网站
 
-### 写一篇图文并茂的博客
+接下来就是主角登场的时间了，执行以下命令，我们将在本地创建一个基于Jekyll的网站：
 
-接下来，我们开始写第一篇博客了！在这篇博客中，我们将会使用各种Markdown语法。
-
-```python
-def my_function():
-    print('Hi, this is my function')
+```bash
+$ jekyll new my-awesome-site
+$ cd my-awesome-site
+$ bundle exec jekyll serve
 ```
+
+打开浏览器，访问[http://localhost:4000](http://localhost:4000)，你应该看到一个Jekyll为你生成的网站。
+
+
+## 强强联合——使用Jekyll在GitHub Pages上的内容创建网站
+
+假设你之前克隆的repo存在`${MY_SITE}目录下，则你可以将`my-awesome-site`中的文件移动到`${MY_SITE}`，并且移除你开始创建的index.html，然后push到GitHub。稍等片刻后再次打开你的首页，你会发现它的内容已经变了。
+
+接下来你就可以在`_posts`目录下创建新的`.markdown`或者`.md`文件来写作博客了。这里需要注意的是，文件名需要遵守一定的格式，也就是日期，然后你的题目，具体可以参考新建项目时Jekyll自动生成的那个`.markdown`文件。
