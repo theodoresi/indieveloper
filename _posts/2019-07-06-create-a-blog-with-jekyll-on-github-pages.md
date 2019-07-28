@@ -3,8 +3,33 @@ title: 使用Jekyll在GitHub Pages上创建自己的博客
 date: 2019-07-06 12:40:49 +0800
 categories: jekyll
 ---
+## 为何使用Jekyll + GitHub Pages搭建博客
+
+创建自己的博客有各种各样的途径。入门级玩家可以直接使用新浪、网易、CSDN或者cnblogs等平台提供的服务。这些服务的优点在于它们提供了十分成熟，稳定的博客功能，你只需要注册一个账号，就可以与所有人分享你的知识和观点，而且由于使用人数众多，相对来说你的文章更可能被别人看到。但是它们的缺陷也是显而易见的，例如广告众多，只能使用服务提供商的域名，无法灵活配置页面样式，无法增加定制化功能等等。
+
+如果你是硬核玩家，则可以购买VPS或者Webhosting服务，然后使用WordPress这样的软件来打造自己的个人网站。这一方案能为你提供非常强大的扩展性，你可以让你的博客拥有任何你所想要的功能，但是你必须为之支付一定的费用。而且更重要的是，你需要为网站性能以及安全负责，这些事务会极大地分散你的精力，如果你没有相关经验，那么在你发表第一篇博客之前可能已经想放弃了。
+
+而Jekyll + GitHub Pages则在上述两种方案之间找到了平衡：
+
+* 你只需新建一个GitHub repo，其中的文件就是你的网站内容。例如你在repo中存储一个index.html，则用户在访问你的网站时，其浏览器显示的内容就是这个文件的内容。
+* 使用Jekyll，你只要以Markdown格式写博客，Jekyll就可以将其转换成HTML，生成一个网站。
+* 通过`git push`命令你就可以把本地网站文件推送到GitHub，随后GitHub会使用Jekyll对网站源文件进行“编译”，生成实际要显示的HTML文件。
+* Jekyll支持模板，你可以使用、修改甚至自己创建模板，让自己的博客与众不同。
+* GitHub Pages支持自定义域名，这样更有利于你打造个人品牌。
+* 完全免费
+
+## 从简单的事情开始——使用GitHub Pages创建一个网站
+
+[GitHub Pages](https://pages.github.com/)是一个静态网站托管服务，你可以在这里找到[官方文档](https://help.github.com/en/categories/github-pages-basics)。学习接下来就通过简单的几个步骤，实践一下GitHub Pages的Hello World：
+
+1. 创建一个新的**public** repo，名字是`<your_user_name>.github.io`，其中`<your_user_name>`必须是你的用户名。由于我们随后要使用Jekyll来构建网站，所以我建议在`Add .gitignore`那里选择Jekyll。
+1. 将repo克隆到本地，然后在其中创建一个index.html，写入任意内容，然后push到repo中。
+1. 稍等片刻，打开`https://<your_user_name>.github.io`，你会发现自己的网站已经可以访问了！
+
 
 ## 安装与配置开发环境
+
+工欲善其事必先利其器，在写博客之前我们需要创建好写作环境。这一步骤还是有点挑战的，尤其是如果你像我一样对Ruby没有任何使用经验，对其生态环境也不了解的话。不过坑我已经帮你踩过了，只要你紧随我的脚步，相信你一定能顺利度过雷区，开启自己的写作生涯。
 
 我们这里介绍两个平台，Windows 10和Linux(以Ubuntu 19.04/Manjaro 18.04为例)。
 
@@ -51,7 +76,7 @@ Windows不是官方正式支持的平台，但是通过一些“小技巧”还�
 
 1. 下载安装[Rubyinstaller](https://rubyinstaller.org/downloads/)
 1. 在安装的最后一步，运行`ridk install`
-1. 安装结束后，打开新的命令行窗口，运行`gem install jekyll bundler`
+1. 安装结束后，打开新的命令行窗口（在开始菜单中搜索ruby，找到`Start Command Prompt with Ruby`），运行`gem install jekyll bundler`
 1. 测试jekyll是否正常`jekyll -v`
 
 ### Jekyll的基本配置
