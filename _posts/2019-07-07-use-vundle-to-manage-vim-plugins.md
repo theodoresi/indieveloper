@@ -108,6 +108,17 @@ Vim凭借其本身的功能，已经称得上地表最强大文本编辑器之�
 
 如果以后想安装新的插件，只要根据上面的描述，根据插件来源在相应的位置添加插件的名字就好了。而如果你想删除插件，只要把它从`.vimrc`中移除，然后运行`:PluginClean`就好了。
 
+
+### 加餐：Windows下使用Vundle
+
+如果你喜欢在Windows下使用gVim，你同样可以享受到Vundle带来的福利。你只需要：
+1. 改变存放Vundle的位置：`git clone https://github.com/VundleVim/Vundle.vim.git "d:/Program Files (x86)/Vim/vimfiles/bundle/Vundle.vim"`，注意把`d:/Program Files (x86)/Vim`改为你实际安装Vim的目录。
+1. 改变`.vimrc`中runtime path的设置：
+```
+set rtp+=$VIM/vimfiles/bundle/Vundle.vim
+call vundle#begin('$VIM/vimfiles/bundle')
+```
+
 ## 总结
 
 虽然说有了Vundle之后，妈妈再也不用担心我安装Vim插件的时候掉头发了，但是在此还是劝诫大家，劳逸结合，适度编程！
