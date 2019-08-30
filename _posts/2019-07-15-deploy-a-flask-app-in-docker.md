@@ -2,7 +2,7 @@
 title: 使用Docker部署Flask项目
 date: 2019-07-15 07:00:49 +0800
 categories: docker
-tags: docker flask
+tags: docker container cloud
 
 ---
 
