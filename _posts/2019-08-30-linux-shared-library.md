@@ -87,27 +87,29 @@ def find_library(name):
 
 到这里我们已经了解到了许多信息，我们知道在载入shared library的过程中涉及到`so name`，`ldconfig`，以及`cdll`等的参与。等等，怎么没有`LD_LIBRARY_PATH`呢？这一点和我的预期有所出入。事实上也有人提出了相同的问题。在较新版本的Python中（如2.7.16，3.7.3，这是我机器上安装了的两个Python版本），在`find_library`的注释里有一行`# See issue #9998`，大家可以自己打开[Issue 9998](https://bugs.python.org/issue9998)看一看。
 
-这个Issue的主旨就是为什么`find_library`没有考虑`LD_LIBRARY_PATH`。在回贴中有人提出文档已经说明，`find_library`的目的就是像编译器（准确的说是linker）一样找出库文件的名字（例如你使用gcc编译时传入-lm，gcc会找到libm.so.6）
+这个Issue的主旨就是为什么`find_library`没有考虑`LD_LIBRARY_PATH`。在回贴中有人提出文档已经说明，`find_library`的目的就是像编译器（准确的说是linker）一样找出库文件的名字（例如你使用gcc编译时传入-lm，gcc会找到libm.so.6）。我们来看下文档中的说法(Python 2)
 
 > The purpose of the find_library() function is to locate a library in a way similar to what the compiler does (on platforms with several versions of a shared library the most recent should be loaded), while the ctypes library loaders act like when a program is run, and call the runtime loader directly.
 
-按照文档的意思，`find_library`的行为会像compile-time linker那样（在新版本Python 3中有所变化，可以查看[这里](https://bugs.python.org/issue18502)）。我对这一点感到有些惊讶，因为**代码中使用`ldconfig -p`的输出来寻找库的名字，但是如果我们看一下ldconfig的man page，会发现ldconfig - configure dynamic linker run-time bindings**。因此我对这一实现其实**依然不太理解**。
+按照文档的意思，`find_library`的行为会像compile-time linker那样（在Python 3.6以后有所变化，我下面有说到）。我对这一点感到有些惊讶，因为**代码实现中使用`ldconfig -p`来寻找库的名字，但是如果我们看一下ldconfig的man page，会发现ldconfig的作用是configure dynamic linker run-time bindings**。因此我对这一实现其实**依然不太理解**。
 
-我们暂且假设`find_library`如其所说，和compile-time linker表现一致。文档中提到
+在我看来，`find_library`**原本的目标是通过一个传给linker的-l参数那样，找到一个库的so name，就像文档中的代码示例那样。但是它的实现却没有优先使用ld -t的输出，而是使用了ldconfig，这在我看来很奇怪。**
+
+我们只能暂且假设`find_library`如其所说，和compile-time linker表现一致，忽略它的代码实现。文档中又提到
 
 > If wrapping a shared library with ctypes, it may be better to determine the shared library name at development time, and hardcode that into the wrapper module instead of using find_library() to locate the library at runtime.
 
-在有上述假设的情况下，看来是ijson库的`find_yajl_ctypes`这个方法的实现有些问题。它不应该使用`so_name = util.find_library('yajl')`来寻找shared library的so name，而应该把名字写死，这样`cdll.LoadLibrary(so_name)`就可以使用`dlopen`打开正确的so文件了。
+在有上述假设的情况下，看来是ijson库的`find_yajl_ctypes`这个方法的实现有些问题。它不应该使用`so_name = util.find_library('yajl')`来寻找shared library的so name，而应该把名字写死，这样`cdll.LoadLibrary(so_name)`就可以打开正确的so文件了（背后使用了`dlopen`）。
 
-但作者为何没有那么写呢？正如在Issue 9998中一些人提出的那样，如果写死（限定使用yajl2，即cdll.LoadLibrary('libyajl.so.2')），更换一个平台就无法找到正确的文件了，因为并不是所有平台的shared library都是libxxx.so.N这个格式的，也就是说保证跨平台性的任务就被迁移到了ijson的开发者身上。
+但ijson的作者为何没有那么写呢？正如在Issue 9998中一些人提出的那样，如果写死（限定使用yajl2，即cdll.LoadLibrary('libyajl.so.2')），更换一个平台就无法找到正确的文件了，因为并不是所有平台的shared library都是libxxx.so.N这个格式的，也就是说保证跨平台性的任务就被迁移到了ijson的开发者身上。
 
-帖子中的讨论还是挺有趣的，从这些讨论中我们可以真实地看到跨平台开源编程语言/软件开发的复杂度。
+帖子中的讨论还是挺有趣的，从这些讨论中我们可以真实地看到由于各个平台之间的割裂，导致跨平台开源编程语言或软件开发的复杂性。
 
-在经过Issue 9998的讨论后，3.6以后的版本已经加入了对`LD_LIBRARY_PATH`的搜索（把其中的value作为-L参数传入ld，对ld的输出进行regex匹配，这里为不得不有所疑问，把`LD_LIBRARY_PATH`中的值传入ld真的是正确的做法吗？我为什么会这么问，你看完这篇文章就懂了），而且文档中对于这个方法的描述也有了变化(Python 2中则没有)
+在经过Issue 9998的讨论后，3.6以后的版本已经加入了对`LD_LIBRARY_PATH`的搜索（把其中的value作为-L参数传入ld，对ld的输出进行regex匹配，这里我**觉得也很奇怪**，把`LD_LIBRARY_PATH`中的值传入ld真的是正确的做法吗？我为什么会这么问，你看完这篇文章应该就懂了），而且文档中对于这个方法的描述也有了变化
 
 > The purpose of the find_library() function is to locate a library in a way similar to what the compiler or runtime loader does
 
-不过这一搜索是在最后才进行的，即其他途径中都没有找到这个库，这和loader载入shared library的顺序还是不太一样。这样依然无法解决我最开始遇到的问题，因为此时`find_library`找到的依然是`ldconfig -p`返回的旧版本。有兴趣的话可以看一下Python的源码。
+不过这一搜索是在最后才进行的，即其他途径中都没有找到这个库的时候才会做，这和dynamic linker/loader载入shared library的顺序还是不太一样。而且即便有了这一变化，依然无法解决我最开始遇到的问题，因为此时`find_library`会优先使用`ldconfig -p`的输出，而它会返回旧版本，`LD_LIBRARY_PATH`中的值会被忽略掉。有兴趣的话可以看一下Python的源码。
 
 我觉得背景介绍应该在此打住，毕竟我们这篇文章的主题是关于Linux中shared library本身的，而不是如何在Python extension中使用这些shared library。
 
