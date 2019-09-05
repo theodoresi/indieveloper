@@ -26,8 +26,9 @@ sudo dpkg -i <installation_package.deb>
 1. 系统托盘应该多了一个键盘图标，右键点击，打开configure
 1. 点击+，去掉Only Show Current Language的钩，搜素sogou
 1. 选中搜狗拼音，点击OK
+1. 选中sogou，点击向上的箭头，把它移动到第一个位置，保存退出
 1. 按Ctrl+空格就可以切换输入法了
 
 ### 可能遇到的问题
 1. 无法使用shift切换中英文输入法
-打开Region & Language的配置页面，然后点击拼音输入法的齿轮，在shortcut页中把Switch Chinese/English的快捷键去掉
+打开Region & Language的配置页面，然后点击拼音输入法的齿轮，在shortcut页中把Switch Chinese/English的快捷键去掉。点击状态栏的fcitx图标，点击restart,稍等片刻就好啦！
