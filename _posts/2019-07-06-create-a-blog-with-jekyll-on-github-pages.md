@@ -52,6 +52,15 @@ $ \curl -sSL https://get.rvm.io | bash -s stable
 # * To start using RVM you need to run `source /home/drizzlex/.rvm/scripts/rvm`
 #     in all your open shell windows, in rare cases you need to reopen all shell windows.
 $ source /home/drizzlex/.rvm/scripts/rvm
+
+如果上述gpg2命令无法运行成功，那么Ubuntu用户可以使用apt来安装:
+# https://github.com/rvm/ubuntu_rvm
+$ sudo apt-get install software-properties-common
+$ sudo apt-add-repository -y ppa:rael-gc/rvm
+$ sudo apt-get update
+$ sudo apt-get -y install rvm
+
+最后使用rvm安装ruby 2.6
 $ rvm install ruby-2.6
 ```
 
