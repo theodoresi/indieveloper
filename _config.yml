@@ -25,16 +25,16 @@ github_username:  theodoresi
 # Build settings
 markdown: kramdown
 #theme: minima
-theme: jekyll-theme-prologue
+#theme: jekyll-theme-prologue
 
 # -------------------------
 # Use remote theme
-#remote_theme: chrisbobbe/jekyll-theme-prologue
+remote_theme: chrisbobbe/jekyll-theme-prologue
 # -------------------------
 
 plugins:
   - jekyll-feed
-    #  - jekyll-remote-theme  # the remote theme plugin, 
+  - jekyll-remote-theme  # the remote theme plugin, 
 
 
 # Exclude from processing.
