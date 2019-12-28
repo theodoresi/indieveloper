@@ -19,22 +19,22 @@ description: >- # this means to ignore newlines until "baseurl:"
   Welcome to Theo's blog!
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: jekyllrb
+twitter_username: drizzlex
 github_username:  theodoresi
 
 # Build settings
 markdown: kramdown
 #theme: minima
-#theme: jekyll-theme-prologue
+theme: jekyll-theme-prologue
 
 # -------------------------
 # Use remote theme
-remote_theme: chrisbobbe/jekyll-theme-prologue
+#remote_theme: chrisbobbe/jekyll-theme-prologue
 # -------------------------
 
 plugins:
   - jekyll-feed
-  - jekyll-remote-theme  # the remote theme plugin
+    #  - jekyll-remote-theme  # the remote theme plugin, 
 
 
 # Exclude from processing.
