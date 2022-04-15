@@ -71,3 +71,5 @@ defaults:
 # I also need to have a _sections folder in root directory
 collections: [sections]
 avatar: assets/imgs/avatar.jpg
+
+theme: jekyll-theme-slate
